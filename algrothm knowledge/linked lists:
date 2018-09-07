@@ -1,0 +1,21 @@
+linked lists:
+
+stack implementation:
+- dynamic array or list
+- dynamic array:
+- faster because you dont allocate elements that often
+- a lot of elements are not used (more space used)
+- random access (not used for stacks)
+
+
+- linked list
+ - faster implementation
+ - slower beause allocating new elements all the times
+
+ usually O(N) but can be O(1) when using existing list nodes
+ dummy heads to check for empty list
+
+
+ Yes, NSArray is faster than NSSet for simply holding and iterating. As little as 50% faster for constructing and as much as 500% faster for iterating. Lesson: if you only need to iterate contents, don't use an NSSet.
+
+ https://gist.github.com/acegreen/e16a2259a93dab880a7f

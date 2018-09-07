@@ -1,0 +1,26 @@
+    Node *first = [Node new];
+    first.value = @1;
+    Node *second = [Node new];
+    second.value = @2;
+    Node *third = [Node new];
+    third.value = @3;
+    Node *fourth = [Node new];
+    fourth.value = @4;
+    Node *fifth = [Node new];
+    fifth.value = @5;
+    Node *sixth = [Node new];
+    sixth.value = @6;
+    Node *seventh = [Node new];
+    seventh.value = @7;
+    
+    Node *eight = [Node new];
+    eight.value = @8;
+    
+    first.next = second;
+    second.next= third;
+    third.next = fourth;
+    fourth.next = fifth;
+    fifth.next = sixth;
+    sixth.next = seventh;
+    seventh.next = eight;
+    eight.next = fourth;

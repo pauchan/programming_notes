@@ -1,0 +1,16 @@
+class BoolNumber : NSObject {
+  @property (readwrite) Bool boolValue;
+}
+
+We can return it from our cancellable_dispatch_after method like so:
+
+- (BoolNumber *) cancellable_dispatch_after(when, queue, block) {
+    BoolNumber *cancelState = [[BoolNumber alloc] init];
+   // the newBlock only runs after "when" and only if the cancelState bool value is set to false
+   newBlock = ^{
+    if ( cancelState.boolValue == NO)
+             block()
+   };
+   dispatch_after(when, queue, newBlock);
+  return cancelState;
+}

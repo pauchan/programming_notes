@@ -1,0 +1,9 @@
+        NSString *s = @"This is a very long test string.";
+        NSRange fullRange = NSMakeRange(0, [s length]);
+        [s enumerateSubstringsInRange:fullRange
+                              options:NSStringEnumerationByComposedCharacterSequences
+                           usingBlock:^(NSString *substring, NSRange substringRange,
+                                        NSRange enclosingRange, BOOL *stop)
+        {
+            NSLog(@"%@ %@", substring, NSStringFromRange(substringRange));
+        }];

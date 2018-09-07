@@ -1,0 +1,27 @@
+@interface Test: NSObject
+  
+   +(BOOL)detectCycleForHead:(Node *)head;
+  
+@end
+
+@implementation Test
+  
+    +(BOOL)detectCycleForHead:(Node *)head {
+    Node *slower = head;
+    Node *faster = head.next;
+    
+    while(true) {
+      NSLog(@"slower: %@ faster: %@", slower.value, faster.value);
+      if(slower == faster || slower == faster.next) {
+        return YES;
+      }
+      if (faster.next == nil || faster == nil) {
+        return NO;
+      }
+      slower = slower.next;
+      faster = faster.next.next;
+    }
+    return NO;
+  }
+  
+@end

@@ -1,0 +1,83 @@
+#import <Foundation/Foundation.h>
+#import <stdio.h>
+
+@interface Node: NSObject
+  @property (nonatomic, strong) Node *next;
+  @property (nonatomic) NSInteger value;
+  -(instancetype)initWithNumber:(NSInteger)number;
+@end
+  
+
+  @implementation Node
+  
+  -(instancetype)initWithNumber:(NSInteger)number {
+
+  self = [super init];
+  self.value = number;
+  return  self;
+  }
+  
+  @end
+  
+@interface SingleList: NSObject
+  @property (nonatomic, strong) Node *top;
+  
+-(NSInteger)pop;
+-(void)push:(NSInteger)number;
+  
+@end
+  
+@implementation SingleList
+
+  
+-(NSInteger)pop {
+  NSInteger returnVal = self.top.value;
+  self.top = self.top.next;
+  return returnVal;
+}
+
+-(void)push:(NSInteger)number {
+  Node *node = [[Node alloc] initWithNumber:number];
+  node.next = self.top;
+  self.top = node;
+}
+    
+@end
+
+
+int main (int argc, const char * argv[])
+{
+  @autoreleasepool {
+    // NSString* hello = @"Hello, World!";
+    // for (int i = 1; i <= 5; i++) {
+    //   printf("%s #%d\n", [hello UTF8String], i);
+    // }
+    SingleList *sl = [SingleList new];
+    
+    NSInteger p;
+    
+    p = [sl pop];
+    NSLog(@"result: %i", p);
+    
+    [sl push: 1];
+    [sl push: 2];
+    [sl push: 3];
+    
+    p = [sl pop];
+    NSLog(@"result: %i", p);
+    
+    p = [sl pop];
+    NSLog(@"result: %i", p);
+    
+    p = [sl pop];
+    NSLog(@"result: %i", p);
+    
+    p = [sl pop];
+    NSLog(@"result: %i", p);
+    
+    p = [sl pop];
+    NSLog(@"result: %i", p);
+    
+    
+  }
+}

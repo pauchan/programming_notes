@@ -1,0 +1,7 @@
+stack:
+
+push/pop
+what about error codes?
+- create stack/delete stack
+- deleting stack -> just go over list, deleting as it goes
+- when implementing it, start with inserting at head, it will make your implementation super easy

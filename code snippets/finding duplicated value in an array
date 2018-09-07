@@ -1,0 +1,41 @@
+finding duplicated value in an array
+
+@implementation Solution
+	-(NSInteger) singleNumber:(NSArray *) A  {
+	
+	NSMutableDictionary *memory = [NSMutableDictionary new];
+	for (NSNumber *x in A) {
+	    NSNumber *acc = [memory objectForKey:x];
+	    if (acc != nil) {
+	        acc = [NSNumber numberWithInteger: acc.integerValue + 1];
+	        [memory setObject: acc forKey:x];
+	    } else { 
+	        [memory setObject:@1 forKey:x];
+	    }
+	  }
+	  
+	  for (NSNumber *x in A) {
+	   NSNumber *acc = [memory objectForKey:x];
+	    if (acc == @1) {
+	        return x.integerValue;
+	    }
+	  }
+	  // something went wrong
+	  return 0;
+	}
+@end
+
+Better one
+
+@implementation Solution
+	-(NSInteger) singleNumber:(NSArray *) A  {
+	
+	NSNumber *x = [A objectAtIndex: 0];
+	int counter = x.intValue;
+	for (int i = 1; i<A.count; i++) {
+	    NSNumber *y = [A objectAtIndex: i];
+	    counter = counter ^ y.intValue;
+	  }
+	  return counter;
+	}
+@end

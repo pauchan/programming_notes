@@ -1,0 +1,40 @@
+
+
+1. find the value in sigle-linky list
+
+
+-(NSInteger)checkForValue:(NSInteger)value {
+
+  Node *currentNode = self.top;
+  while(currentNode != nil && currentNode.value != value) {
+    currentNode = currentNode.next;
+  }
+  return currentNode.value;
+}
+
+
+2. delete node of a given value (remember to have two pointers!!!)
+
+-(void)deleteNodeOfValue:(NSInteger)value {
+
+  Node *previousNode;
+  Node *currentNode = self.top;
+  while(currentNode != nil) {
+  
+    if (currentNode.value == value) {
+      previousNode.next = currentNode.next;
+      currentNode = nil;
+    }
+    previousNode = currentNode;
+    currentNode = currentNode.next;
+  }
+}
+
+3. delete all nodes
+
+4. instert element in list 
+
+5. insert element in head
+
+
+6. insert at and delete for 

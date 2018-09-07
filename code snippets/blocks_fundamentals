@@ -1,0 +1,33 @@
+#import <Foundation/Foundation.h>
+#import <stdio.h>
+
+
+@interface Pawel: NSObject
+  
+  @property (nonatomic, copy) NSInteger (^addStuff)(NSInteger a, NSInteger b);
+  - (NSInteger)addA:(NSInteger)a toB:(NSInteger)b;
+  
+@end
+  
+@implementation Pawel
+  
+  - (NSInteger)addA:(NSInteger)a toB:(NSInteger)b {
+
+    NSInteger x = self.addStuff(a,b);
+    return x;
+}
+  
+@end
+
+
+int main (int argc, const char * argv[])
+{
+  @autoreleasepool {
+      Pawel *pawel = [Pawel new];
+      pawel.addStuff = ^(NSInteger a, NSInteger b) {
+        return a + b;
+      };
+      NSInteger x = [pawel addA:2 toB:3];
+      NSLog(@"this is result: %i", x);
+  }
+}

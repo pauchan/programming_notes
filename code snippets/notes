@@ -1,0 +1,43 @@
+NS_ASSUME_NONNULL_BEGIN
+  
+
+NS_ASSUME_NONNULL_END
+
+
+How to detect a common superview.  
+5 Answers
+Binary tree to list, inorder  
+2 Answers
+The same list, back to inorder binary tree  
+4 Answers
+Design a simple photo stream app  
+
+Given an array (for example, [ 1, 0, 2, 0, 0, 3, 4 ]), implement methods that
+
+1. returns the number of non-zero elements (4)
+2. moves the non-zero elements to the beginning of the array (the rest of the elements don't matter)
+  -> both [ 1, 2, 3, 4, 0, 0, 0] and [ 4, 1, 3, 2, X, Y, Z ] are valid  
+
+
+  given an array of words, how to eliminate the duplicates?
+
+You have a simple tree structure Ⓐ and its clone ⓐ.
+
+Each node in the tree has a pointer to it's parent as well as an array of its children.
+
+Given an original tree's node Ⓑ and cloned tree ⓐ, implement a method that returns ⓑ (the clone of Ⓑ).
+(Imagine finding the matching UIButton/UISlider/UIView in a separate cloned view controller.)
+
+
+a telephone keypad has letters associated with each number (e.g. 2 = abc, 3 = def); given a passphrase of "fb1" (e.g. one that you might use to log into a bank account), come up with an algorithm that would assemble an array that contains all the different possible letter combinations that, when typed into a telephone dial pad, would be equivalent to the original passphrase.  
+
+iOS developers have a "dispatch_after(when, queue, block)" Grand Central Dispatch (GCD) function they can utilize but once it's set up, these calls can not be easily cancelled.
+
+Describe how you might implement a more convenient version of this named "cancellable_dispatch_after"  
+
+Pretend you're given a simple iOS app with a table view and a text field which looks like a search bar. It has methods to call to a remote server to get potential auto complete words. Describe how you would actually implement the iOS side.  
+
+
+Given nested arrays, write an enumerator class such that next() returns the elements in sequential order, e.g.:
+[1,[4,3],6,[5,[1,0]]] -&gt; 1, 4, 3, 6, 5, 1, 0
+also implement allObjects for this class  

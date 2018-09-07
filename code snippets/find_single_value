@@ -1,0 +1,25 @@
+@implementation Solution
+	-(NSInteger) singleNumber:(NSArray *) A  {
+	
+	NSMutableDictionary *memory = [NSMutableDictionary new];
+	for (NSNumber *x in A) {
+	    NSLog(@"%@", x);
+	    NSNumber *acc = [memory objectForKey:x];
+	    if (acc != nil) {
+	        acc = acc + 1;
+	    } else { 
+	        [memory setObject:@1 forKey:x];
+	    }
+	  }
+	  
+	  for (NSNumber *x in A) {
+	   NSNumber *acc = [memory objectForKey:x];
+	   NSLog(@"%@", acc);
+	    if (x == @1) {
+	        return x.integerValue;
+	    }
+	  }
+	  // something went wrong
+	  return 0;
+	}
+@end

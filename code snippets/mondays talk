@@ -1,0 +1,46 @@
+## iOS team - history
+
+## Squads
+
+So as you can see our iOS team is pretty dsitributed. The situation is even more extreme for Android team having members in 4 different offices and web with members working from 7 different countries.
+ To mitigate this problem we are using Spotify squad based team structure. That means that everybody in the team is wearing two hats -> belongs to the horizontal specialist team called squad and vertical, feature or responsibility based team.
+
+Squads contains specialists for a single specialization be it iOS, Backend or Machine Learning 
+- are pretty widely distributed
+- coordinate within each other rarely, mostly on the topics that affects the whole technology stack of product (like app architecture, persistence, 3rd party libraries usage). 
+
+Feature teams are multi-disciplinary teams that work on the same area of responsiblitiy
+- are located in the same office (or at least timezone)
+- coordinate and iterate very often
+
+How we iterate?
+
+
+
+
+So the typical route of a feature to it's developement is as follows:
+
+## Prototyping flow
+
+prototyping -> developer -> team members (designer, product manager, other developers) -> alpha release (within company + selected outsiders), Deploygate -> beta release (TestFlight), feature toggles to a limited audience -> production 
+
+## Prototyping
+
+First before we do any coding we are trying to get our ideas out to users. We are trying to conduct as much user interviews and do them as fast as possible. This is somewhat difficult as our offices where we do most of our development: Bristol and Tokyo are not located in the places where our users comes from: Southeast Asia, Mena, recently Africa and some parts of continental Europe such as Spain, Greece or Russia. We conduct different types of user interviews, depending on our capability in a region. 
+
+### Simple user interviews
+
+In most of the countries where we have product presence, we have community managers that try to encourage users to use our product and publish content. The same community managers conduct user interviews to get innsights on how users are using our app, what they find confusing, what they find lacking. The results are published on our internal wiki for everybody to use.
+
+### Regional offices
+
+We have offices in countries such as: Indonesia, Spain, Lebanon with the established base of contacts with our core users 
+
+### Design sprints
+
+Finally in our office, we can take full advante of our resources and conduct user interviews as 
+
+user interviews - Don't let me think, design sprints - sprint
+
+This is the 
+
