@@ -12,21 +12,19 @@ import Foundation
 
 class Solution {
     func lengthOfLongestSubstring(_ s: String) -> Int {
-
+        if s.count == 0 { return 0 }
         var startIndex = s.startIndex
         var longestSubstring = ""
-        var currentSubstring = ""
-        
+        var currentSubstring = longestSubstring
+
         for index in s.indices {
-            let currentSubstringIndex = s.index(startIndex, offsetBy: currentSubstring.count)
-            currentSubstring = String(s[startIndex...currentSubstringIndex])
             if let previousPosition = currentSubstring.range(of: String(s[index])) {
-                // check for lengths, if its higher then the highest, use this one
-                if currentSubstring.count > longestSubstring.count {
-                    longestSubstring = currentSubstring
-                }
                 let substringToRemove = currentSubstring[...previousPosition.lowerBound]
                 startIndex =  s.index(startIndex, offsetBy: substringToRemove.count)
+            }
+            currentSubstring = String(s[startIndex...index])
+            if currentSubstring.count > longestSubstring.count {
+                longestSubstring = currentSubstring
             }
         }
         return longestSubstring.count
@@ -35,3 +33,9 @@ class Solution {
 
 let s = Solution()
 s.lengthOfLongestSubstring("bbbbb")
+s.lengthOfLongestSubstring("pwwkew")
+s.lengthOfLongestSubstring("abcabcbb")
+s.lengthOfLongestSubstring("")
+s.lengthOfLongestSubstring("a")
+s.lengthOfLongestSubstring("au")
+
