@@ -18,10 +18,15 @@ class Solution {
         var currentSubstring = longestSubstring
 
         for index in s.indices {
+            // first, we determine if the next character is already a member of a substring
+            // if it is, we cutoff the part of the string past the previous occurence -> update startIndex
             if let previousPosition = currentSubstring.range(of: String(s[index])) {
                 let substringToRemove = currentSubstring[...previousPosition.lowerBound]
                 startIndex =  s.index(startIndex, offsetBy: substringToRemove.count)
             }
+            // update the current substring with the new startIndex (if needed) and check if it's the longest one so far
+            // note: I started by calling `currentSubstring = String(s[startIndex...index])` first but then
+            // it's really hard to have the last character in the string included in the solution
             currentSubstring = String(s[startIndex...index])
             if currentSubstring.count > longestSubstring.count {
                 longestSubstring = currentSubstring
