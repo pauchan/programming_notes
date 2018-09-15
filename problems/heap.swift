@@ -4,42 +4,55 @@ class Heap {
 
 	private var root: Node?
 	
-	func insert(int value) {
-		let n = Node(value = value)
+	func insert(value: Int) {
+		let n = Node()
+		n.value = value
 		// traverse breadth and find first null node
-		if root == null {
+		if root == nil {
 			root = n
 		} else {
-			var stack = root
+			var stack = [root]
 			while stack.count != 0 {
-				if stack[0].left != null {
-					stack.append(stack[0].left)
+				print("entered loop")
+				if let left = stack[0]?.left {
+					stack.append(left)
+					print("left to queue")
 				} else {
 					n.parent = stack[0]
-					stack[0].left = n
+					stack[0]?.left = n
+					print("inserted left")
 					break
 				}
-				if stack[0].right != null {
-					stack.append(stack[0].right)
+				if let right = stack[0]?.right {
+					stack.append(right)
+					print("right to queue")
 				} else {
-				n.parent = stack[0]
-					stack[0].right = n
+					n.parent = stack[0]
+					stack[0]?.right = n
+					print("inserted right")
 					break
 				}
 				stack.remove(at: 0)
+				print("removed at 0")
 			}
 
-			// bubble up to as far as it should be
-			while(n.parent.value > n.value) {
-				var temp = n.parent
-				n.parent = n.parent.parent
+			bubbleUp(n: n)
+		}
+	}
 
+	func bubbleUp(n: Node) {
+		if(n.parent?.value ?? 0 > n.value) {
+			var temp = n.parent?.value
+			n.parent?.value = n.value
+			n.value = temp
+			if n.parent != nil {
+				bubbleUp(n: n.parent!)
 			}
 		}
 	}
 
-	func getMin() -> int {
-		return root.value
+	func getMin() -> Int? {
+		return root?.value
 	}
 
 	private func heapify() {
@@ -48,8 +61,17 @@ class Heap {
 }
 
 class Node {
-	var value: int
-	var parent: Node
-	var  left: Node
-	var  right: Node
+	var value: Int!
+	var parent: Node?
+	var  left: Node?
+	var  right: Node?
 }
+
+let h = Heap()
+h.insert(value: 5)
+h.insert(value: 111)
+h.insert(value: 3)
+h.insert(value: 234)
+h.insert(value: 43)
+
+print(h.getMin())
