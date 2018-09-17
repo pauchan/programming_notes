@@ -52,19 +52,44 @@ class Heap {
 	}
 
 	func getMin() -> Int? {
-		return root?.value
+		guard let root = root else { return nil }
+		let x = root.value
+		print(x)
+		root.value = nil
+		swap(node: root)
+		return x
 	}
 
-	private func heapify() {
-
+	private func swap(node: Node) {
+		if (node.left?.value ?? 0 > node.right?.value ?? 0) {
+			if (node.right?.value ?? 0 < node.value) {
+				guard let right = node.right else { return }
+				let temp = node.value
+				node.value = right.value
+				right.value = temp
+				swap(node: right)
+			}
+		} else if (node.left?.value ?? 0 < node.right?.value ?? 0){
+			if (node.left?.value ?? 0 < node.value) {
+				guard let left = node.left else { return }
+				let temp = node.value
+				node.value = left.value
+				left.value = temp
+				swap(node: left)
+			}
+		}
 	}
 }
 
 class Node {
-	var value: Int!
+	var value: Int
 	var parent: Node?
 	var  left: Node?
 	var  right: Node?
+
+	init(value: Int) {
+		self.value = value
+	}
 }
 
 let h = Heap()
