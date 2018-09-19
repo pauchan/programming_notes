@@ -3,49 +3,46 @@ import Foundation
 class Heap {
 
 	private var root: Node?
-	
+
 	func insert(value: Int) {
-		let n = Node()
-		n.value = value
+		let n = Node(value: value)
 		// traverse breadth and find first null node
 		if root == nil {
 			root = n
 		} else {
+			// notice how traversal happen here, insert root to queue
+			// in the inner loop
+			// 1. include both left and right children from the first node in the queue if present
+			// 2. remove first node in the queue
 			var stack = [root]
 			while stack.count != 0 {
-				print("entered loop")
 				if let left = stack[0]?.left {
 					stack.append(left)
-					print("left to queue")
 				} else {
 					n.parent = stack[0]
 					stack[0]?.left = n
-					print("inserted left")
 					break
 				}
 				if let right = stack[0]?.right {
 					stack.append(right)
-					print("right to queue")
 				} else {
 					n.parent = stack[0]
 					stack[0]?.right = n
-					print("inserted right")
 					break
 				}
 				stack.remove(at: 0)
-				print("removed at 0")
 			}
-
 			bubbleUp(n: n)
 		}
 	}
 
 	func bubbleUp(n: Node) {
-		if(n.parent?.value ?? 0 > n.value) {
+		if(n.parent?.value ?? 0 > n.value ?? 0) {
 			var temp = n.parent?.value
 			n.parent?.value = n.value
 			n.value = temp
 			if n.parent != nil {
+				// recurse here until you hit root (parent is nil)
 				bubbleUp(n: n.parent!)
 			}
 		}
@@ -54,35 +51,52 @@ class Heap {
 	func getMin() -> Int? {
 		guard let root = root else { return nil }
 		let x = root.value
-		print(x)
 		root.value = nil
 		swap(node: root)
 		return x
 	}
 
 	private func swap(node: Node) {
-		if (node.left?.value ?? 0 > node.right?.value ?? 0) {
-			if (node.right?.value ?? 0 < node.value) {
-				guard let right = node.right else { return }
-				let temp = node.value
-				node.value = right.value
-				right.value = temp
-				swap(node: right)
-			}
-		} else if (node.left?.value ?? 0 < node.right?.value ?? 0){
-			if (node.left?.value ?? 0 < node.value) {
-				guard let left = node.left else { return }
-				let temp = node.value
-				node.value = left.value
-				left.value = temp
-				swap(node: left)
-			}
+		// note to myself:
+	  // there can be three cases here:
+	  // 1. no children so nothing to swap -> we end here
+	  // 2. one children present -> we swap
+	  // 3. both children present -> compare both and pick lower for swap
+	  // (notice recursion, we keep going deeper)
+
+		if node.left?.value == nil && node.right?.value == nil {
+			return
+		}
+
+		if node.left?.value == nil {
+			node.value = node.right!.value
+			node.right!.value = nil
+			swap(node: node.right!)
+			// return is needed here as to not to jump to the next if clause
+			return 
+		}
+
+		if node.right?.value == nil {
+			node.value = node.left!.value
+			node.left!.value = nil
+			swap(node: node.left!)
+			return
+		}
+
+		if node.left!.value! >= node.right!.value! {
+			node.value = node.right!.value
+			node.right!.value = nil
+			swap(node: node.right!)
+		} else {
+			node.value = node.left!.value
+			node.left!.value = nil
+			swap(node: node.left!)
 		}
 	}
 }
 
 class Node {
-	var value: Int
+	var value: Int?
 	var parent: Node?
 	var  left: Node?
 	var  right: Node?
@@ -99,4 +113,9 @@ h.insert(value: 3)
 h.insert(value: 234)
 h.insert(value: 43)
 
-print(h.getMin())
+print("min: \(h.getMin())")
+print("min: \(h.getMin())")
+print("min: \(h.getMin())")
+print("min: \(h.getMin())")
+print("min: \(h.getMin())")
+print("min: \(h.getMin())")
