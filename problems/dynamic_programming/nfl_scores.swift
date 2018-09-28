@@ -20,15 +20,17 @@ func countScores(_ score: Int) -> Int {
 				for ref in scoreRef[x] {
 					var correctValue = ref
 					print("s \(s) ref \(ref) i \(i)")
-					correctValue[i] += 1
-					correctValues.append(correctValue)
+					correctValue[i] += 1 
+					if !correctValues.contains(correctValue) {
+						correctValues.append(correctValue)
+					}
 				}
 			}
 		}
 		scoreRef.append(correctValues)
 	}
-	print(scoreRef[score-1])
-	return scoreRef[score-1].count
+	print(scoreRef[score])
+	return scoreRef[score].count
 }
 
 print(countScores(12))
