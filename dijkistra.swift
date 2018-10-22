@@ -37,15 +37,43 @@ class Graph {
 			}
 		}
 	}
+
+	func dijkistra(startingVertex: Int) -> [Int: Int] {
+		var usedVertices: Set<Int> = []
+		var distances: [Int: Int] = [:]
+		adjencyMatrix.keys.forEach { distances[$0] = Int.max }
+		let allVertices = Set(adjencyMatrix.keys)
+		distances[startingVertex] = 0
+		while usedVertices != allVertices {
+			guard let minimum = allVertices.subtracting(usedVertices).min() else { continue }
+			usedVertices.insert(minimum)
+			for (v,dist) in adjencyMatrix[minimum]! {
+				if (distances[v]! > distances[minimum]! + dist) {
+					distances[v]! = distances[minimum]! + dist
+				}
+			}
+		}
+		print(distances)
+		return distances
+	}
 }
 
 var g = Graph()
-g.addEdge(1,3, value: 2)
-g.addEdge(4,3, value: 2)
-g.addEdge(2,3, value: 2)
-g.addEdge(1,5, value: 2)
-g.addEdge(2,5, value: 2)
-g.addEdge(5,3, value: 2)
+g.addEdge(0,1, value: 4)
+g.addEdge(0,7, value: 8)
+g.addEdge(1,2, value: 8)
+g.addEdge(1,7, value: 11)
+g.addEdge(2,3, value: 7)
+g.addEdge(2,8, value: 2)
+g.addEdge(2,5, value: 4)
+g.addEdge(3,4, value: 9)
+g.addEdge(3,5, value: 14)
+g.addEdge(4,5, value: 10)
+g.addEdge(5,6, value: 2)
+g.addEdge(6,7, value: 1)
+g.addEdge(6,8, value: 6)
+g.addEdge(7,8, value: 7)
 
-g.traverse(startingNode: 1)
 
+
+g.dijkistra(startingVertex: 0)
